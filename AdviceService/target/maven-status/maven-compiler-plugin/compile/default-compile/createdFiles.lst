@@ -1,0 +1,7 @@
+pl\com\mtd\adviceservice\TestClass.class
+pl\com\mtd\adviceservice\config\SecurityConfig.class
+pl\com\mtd\adviceservice\user\User.class
+pl\com\mtd\adviceservice\TestowaClassa.class
+pl\com\mtd\adviceservice\user\UserRepository.class
+pl\com\mtd\adviceservice\AdviceServiceApplication.class
+pl\com\mtd\adviceservice\controller\AppController.class
