@@ -1,5 +1,4 @@
-package pl.com.mtd.AdviceService.model;
-
+package pl.com.mtd.adviceservice.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
@@ -8,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Answer {
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,25 +21,25 @@ public class Answer {
     private String description;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date answerDate;
+    private Date questionDate;
 
 
-    private int Rating;
+    @OneToOne
+    private Category category;
 
-    @ManyToOne
-    private Set<Comment> comments = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH, mappedBy = "question")
+    private Set<Answer> answers = new HashSet<>();
 
-
-    public Answer() {
+    public Question() {
     }
 
-    public Answer(Long id, User user, String description, Date answerDate, int rating, Set<Comment> comments) {
+    public Question(Long id, User user, String description, Date questionDate, Category category, Set<Answer> answers) {
         this.id = id;
         this.user = user;
         this.description = description;
-        this.answerDate = answerDate;
-        Rating = rating;
-        this.comments = comments;
+        this.questionDate = questionDate;
+        this.category = category;
+        this.answers = answers;
     }
 
     public Long getId() {
@@ -67,27 +66,27 @@ public class Answer {
         this.description = description;
     }
 
-    public Date getAnswerDate() {
-        return answerDate;
+    public Date getQuestionDate() {
+        return questionDate;
     }
 
-    public void setAnswerDate(Date answerDate) {
-        this.answerDate = answerDate;
+    public void setQuestionDate(Date questionDate) {
+        this.questionDate = questionDate;
     }
 
-    public int getRating() {
-        return Rating;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setRating(int rating) {
-        Rating = rating;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
-    public Set<Comment> getComments() {
-        return comments;
+    public Set<Answer> getAnswers() {
+        return answers;
     }
 
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
+    public void setAnswers(Set<Answer> answers) {
+        this.answers = answers;
     }
 }

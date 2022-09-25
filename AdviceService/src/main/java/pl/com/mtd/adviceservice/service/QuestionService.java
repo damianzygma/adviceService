@@ -1,8 +1,8 @@
-package pl.com.mtd.AdviceService.service;
+package pl.com.mtd.adviceservice.service;
 
 import org.springframework.stereotype.Service;
-import pl.com.mtd.AdviceService.model.Question;
-import pl.com.mtd.AdviceService.repository.QuestionRepository;
+import pl.com.mtd.adviceservice.model.Question;
+import pl.com.mtd.adviceservice.repository.QuestionRepository;
 
 import java.util.List;
 

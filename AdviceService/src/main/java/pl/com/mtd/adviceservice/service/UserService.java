@@ -1,7 +1,7 @@
-package pl.com.mtd.AdviceService.service;
+package pl.com.mtd.adviceservice.service;
 
 import org.springframework.stereotype.Component;
-import pl.com.mtd.AdviceService.model.User;
+import pl.com.mtd.adviceservice.model.User;
 
 import java.util.List;
 @Component

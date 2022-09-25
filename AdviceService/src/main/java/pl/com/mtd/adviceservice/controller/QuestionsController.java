@@ -1,4 +1,4 @@
-package pl.com.mtd.AdviceService.controller;
+package pl.com.mtd.adviceservice.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-import pl.com.mtd.AdviceService.model.Question;
-import pl.com.mtd.AdviceService.model.User;
-import pl.com.mtd.AdviceService.service.QuestionService;
-import pl.com.mtd.AdviceService.service.UserService;
+import pl.com.mtd.adviceservice.model.Question;
+import pl.com.mtd.adviceservice.model.User;
+import pl.com.mtd.adviceservice.service.QuestionService;
+import pl.com.mtd.adviceservice.service.UserService;
 
 import java.util.List;
 

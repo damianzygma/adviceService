@@ -1,4 +1,4 @@
-package pl.com.mtd.AdviceService.model;
+package pl.com.mtd.adviceservice.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
