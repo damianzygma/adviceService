@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>ZenBlog Bootstrap Template - Single Post</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <div th:replace="fragments :: style"/>
+
+  <!-- =======================================================
+  * Template Name: ZenBlog - v1.2.0
+  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
+  * Author: BootstrapMade.com
+  * License: https:///bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+<div th:replace="fragments :: menu"/>
+
+  <main id="main">
+
+    <section class="single-post-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 post-content" data-aos="fade-up">
+
+            <!-- ======= Single Post Content ======= -->
+            <div class="single-post">
+              <div class="post-meta"><span class="date">Category</span> <span class="mx-1">&bullet;</span> <span>Author</span><span class="mx-1">&bullet;</span> <span>Date</span></div>
+              <h1 class="mb-5">Question: 13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h1>
+              <p class="question-details"><span class="firstcharacter">L</span>orem ipsum dolor sit, amet consectetur adipisicing elit. Ratione officia sed, suscipit distinctio, numquam omnis quo fuga ipsam quis inventore voluptatum recusandae culpa, unde doloribus saepe labore alias voluptate expedita? Dicta delectus beatae explicabo odio voluptatibus quas, saepe qui aperiam autem obcaecati, illo et! Incidunt voluptas culpa neque repellat sint, accusamus beatae, cumque autem tempore quisquam quam eligendi harum debitis.
+                Sunt reprehenderit, hic vel optio odit est dolore, distinctio iure itaque enim pariatur ducimus. Rerum soluta, perspiciatis voluptatum cupiditate praesentium repellendus quas expedita exercitationem tempora aliquam quaerat in eligendi adipisci harum non omnis reprehenderit quidem beatae modi. Ea fugiat enim libero, ipsam dicta explicabo nihil, tempore, nulla repellendus eos necessitatibus eligendi corporis cum? Eaque harum, eligendi itaque numquam aliquam soluta. Explicabo perspiciatis, laborum provident voluptates illum in nulla consectetur atque quaerat excepturi quisquam, veniam velit ex pariatur quos consequuntur? Excepturi reiciendis perferendis, cupiditate dolorem eos illum amet. Beatae voluptates nemo esse ratione voluptate, nesciunt fugit magnam veritatis voluptas dignissimos doloribus maiores? Aliquam, dolores natus exercitationem corrupti blanditiis, consequuntur nihil nobis sed voluptatibus maiores sunt, illo provident aliquid laborum. Vitae, ut.</p>
+               
+                <div class="row">
+                <input type="submit" class="btn btn-primary col-md-2" value="Delete question">
+                <input type="button" class="btn btn-primary col-md-2" value="Update question" th:onclick="|window.location.href='@{/editQuestion}'|">
+                    </div>
+                
+                <div>
+                    <br>
+                    <br>
+              <figure>
+                <div class="row"> 
+                    <div class="col-sm-12">
+                <img th:src="@{img/answers.jpg}" src="../static/img/answers.jpg" alt="" class="center">
+                        </div>
+                    </div>
+
+              </figure>
+                    </div>
+            </div><!-- End Single Post Content -->
+
+            <!-- ======= Comments ======= -->
+            <div class="comments">
+              <h5 class="comment-title py-4">2 Answers</h5>
+              <div class="comment d-flex mb-4">
+                <div class="flex-shrink-0">
+                </div>
+                <div class="flex-grow-1 ms-2 ms-sm-3">
+                  <div class="comment-meta d-flex align-items-baseline">
+                    <h6 class="me-2">Jordan Singer</h6>
+                    <span class="text-muted">2d</span>
+                  </div>
+                    <div class="comment-meta d-flex align-items-baseline">
+                      <span class="rating"> +1501 </span>
+                      <span>
+                          <form method="post" action="#">
+                          <button type="submit" name="1" value="1" class="rating-btn-positive"><i class="fa fa-thumbs-up"></i></button>
+                          </form>   
+                      </span>
+                      <span class="rating"> -16 </span>
+                      <span>
+                          <form method="post" action="#">
+                            <button type="submit" name="1" value="-1" class="rating-btn-negative"><i class="fa fa-thumbs-down"></i></button>
+                          </form>
+                      </span>
+                        </div>  
+                  <div class="comment-body">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non minima ipsum at amet doloremque qui magni, placeat deserunt pariatur itaque laudantium impedit aliquam eligendi repellendus excepturi quibusdam nobis esse accusantium.
+                  </div>
+                    <input type="button" class="btn btn-primary" value="Add comment" th:onclick="|window.location.href='@{/comment}'|">
+
+                  <div class="comment-replies bg-light p-3 mt-3 rounded">
+                    <h6 class="comment-replies-title mb-4 text-muted text-uppercase">Comments</h6>
+
+                    <div class="reply d-flex mb-4">
+                      <div class="flex-grow-1 ms-2 ms-sm-3">
+                        <div class="reply-meta d-flex align-items-baseline">
+                          <h6 class="mb-0 me-2">Brandon Smith</h6>
+                          <span class="text-muted">2d</span>
+                        </div>
+                        <div class="reply-body">
+                          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        </div>
+                      </div>
+                    </div>
+                      <p class="all-comments"><a href="#" >Show all comments</a></p>
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Comments -->
+
+            <!-- ======= Comments Form ======= -->
+            <div class="row justify-content-center mt-5">
+
+              <div class="col-lg-12">
+                <h5 class="comment-title">Leave an Answer</h5>
+                <div class="row">
+                  <div class="col-lg-6 mb-3">
+                    <label for="comment-name">Name</label>
+                    <input type="text" class="form-control" id="comment-name" placeholder="Enter your name">
+                  </div>
+                  <div class="col-lg-6 mb-3">
+                    <label for="comment-email">Email</label>
+                    <input type="text" class="form-control" id="comment-email" placeholder="Enter your email">
+                  </div>
+                  <div class="col-12 mb-3">
+                    <label for="comment-message">Answer</label>
+
+                    <textarea class="form-control" id="comment-message" placeholder="Enter your answer" cols="30" rows="10"></textarea>
+                  </div>
+                  <div class="col-12">
+                    <input type="submit" class="btn btn-primary" value="Post answer">
+                  </div>
+                </div>
+              </div>
+            </div><!-- End Comments Form -->
+
+          </div>
+          <div class="col-md-3">
+            <!-- ======= Sidebar ======= -->
+            
+            <div class="aside-block">
+              <h3 class="aside-title">Categories</h3>
+              <ul class="aside-links list-unstyled">
+                <li><a th:href="@{/category}"><i class="bi bi-chevron-right"></i> Car</a></li>
+                <li><a th:href="@{/category}"><i class="bi bi-chevron-right"></i> Culture</a></li>
+                <li><a th:href="@{/category}"><i class="bi bi-chevron-right"></i> IT</a></li>
+                <li><a th:href="@{/category}"><i class="bi bi-chevron-right"></i> Sport</a></li>
+                <li><a th:href="@{/category}"><i class="bi bi-chevron-right"></i> Food</a></li>
+                <li><a th:href="@{/category}"><i class="bi bi-chevron-right"></i> Housework</a></li>
+                <li><a th:href="@{/category}"><i class="bi bi-chevron-right"></i> Travel</a></li>
+              </ul>
+            </div><!-- End Categories -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: js_scripts"/>
+
+</body>
+
+</html>
