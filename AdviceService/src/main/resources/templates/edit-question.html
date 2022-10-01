@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>ZenBlog Bootstrap Template - Contact</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <div th:replace="fragments :: style"/>
+
+  <!-- =======================================================
+  * Template Name: ZenBlog - v1.2.0
+  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
+  * Author: BootstrapMade.com
+  * License: https:///bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+<div th:replace="fragments :: menu"/>
+
+  <main id="main">
+    <section id="contact" class="contact mb-5">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h1 class="page-title">Edit question</h1>
+          </div>
+        </div>
+
+        <div class="row gy-4">
+
+          <div class="col-md-4">
+            <a href="#" class="me-4 thumbnail">
+                <img th:src="@{img/addQuestion.jpg}" src="../static/img/addQuestion.jpg" alt="" class="img-fluid">
+              </a>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-4">
+            <a href="#" class="me-4 thumbnail">
+                <img th:src="@{img/addQuestion3.jpg}" src="../static/img/addQuestion3.jpg" alt="" class="img-fluid">
+              </a>
+          </div><!-- End Info Item -->
+
+          <div class="col-md-4">
+            <a href="#" class="me-4 thumbnail">
+                <img th:src="@{img/addQuestion2.jpg}" src="../static/img/addQuestion2.jpg" alt="" class="img-fluid">
+              </a>
+          </div><!-- End Info Item -->
+
+        </div>
+
+        <div class="form mt-5">
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <h2>Nickname</h2>>
+              </div>
+              <div class="form-group col-md-6">
+                <h2>E-mail</h2>
+              </div>
+            </div>
+            <div class="row">
+            <div class="form-group col-md-7">
+                <select id="sel1">
+                    <option hidden>Choose</option>
+                    <option>Car</option>
+                    <option>Book</option>
+                    <option>IT</option>
+                </select>
+<!--              <input type="text" class="form-control" name="subject" id="subject" placeholder="Category" required>-->
+            </div>
+              <div class="form-group col-md-3">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Category" required>
+            </div>
+                <div class="form-group col-md-2"><button type="submit">Add Category</button></div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" placeholder="Question" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your question has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Save Changes</button></div>
+          </form>
+        </div><!-- End Contact Form -->
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: js_scripts"/>
+
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>ZenBlog Bootstrap Template - About</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <div th:replace="fragments :: style"/>
+
+  <!-- =======================================================
+  * Template Name: ZenBlog - v1.2.0
+  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
+  * Author: BootstrapMade.com
+  * License: https:///bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+<div th:replace="fragments :: menu"/>
+
+  <main id="main">
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img th:src="@{img/user.jpg}" src="../static/img/user.jpg" alt="Profile" class="rounded-circle">
+              <h2>Name and Surname</h2>
+    
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+                </li>
+
+              </ul>
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  
+                  <h3 class="card-title">Profile Details</h3>
+                    <br>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label user-content">Name</div>
+                    <div class="col-lg-9 col-md-8 user-content">Kevin </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label user-content">Surname</div>
+                    <div class="col-lg-9 col-md-8 user-content">Anderson</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label user-content">Nickname</div>
+                    <div class="col-lg-9 col-md-8 user-content">Kevin123</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label user-content">e-mail</div>
+                    <div class="col-lg-9 col-md-8 user-content">kevinanderson@gmail.com</div>
+                  </div>
+
+
+                </div>
+
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                  <!-- Profile Edit Form -->
+                  <form>
+                   
+
+                    <div class="row mb-3">
+                      <label for="name" class="col-md-4 col-lg-3 col-form-label user-content">Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="name" type="text" class="form-control" id="name" value="Kevin">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="surname" class="col-md-4 col-lg-3 col-form-label user-content">Surname</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="surname" type="text" class="form-control" id="surname" value="Anderson">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="nickname" class="col-md-4 col-lg-3 col-form-label user-content">Nickname</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="nickname" type="text" class="form-control" id="nickname" value="Kevin123">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="email" class="col-md-4 col-lg-3 col-form-label user-content">e-mail</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="email" type="text" class="form-control" id="email" value="kevinanderson@gmail.com">
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                      <button type="submit" class="btn btn-primary">Delete user</button>
+                    </div>
+                  </form><!-- End Profile Edit Form -->
+
+                </div>
+
+                <div class="tab-pane fade pt-3" id="profile-change-password">
+                  <!-- Change Password Form -->
+                  <form>
+
+                    <div class="row mb-3">
+                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label user-content">Current Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="password" type="password" class="form-control" id="currentPassword">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label user-content">New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label user-content">Re-enter New Password</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Change Password</button>
+                    </div>
+                  </form><!-- End Change Password Form -->
+
+                </div>
+
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+                                
+  </main><!-- End #main -->
+
+<div th:replace="fragments :: footer"/>
+
+<div th:replace="fragments :: js_scripts"/>
+
+</body>
+
+</html>
