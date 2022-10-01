@@ -15,10 +15,10 @@ public class User {
     @Column(nullable = false, length = 64)
     private String password;
 
-    @Column(nullable = false, length = 64)
+    @Column(length = 64)
     private String questionForPassword;
 
-    @Column(nullable = false, length = 45)
+    @Column(length = 45)
     private String questionAnswer;
     @Column(nullable = false, length = 20)
     private String firstName;
