@@ -1,6 +1,8 @@
 package pl.com.mtd.adviceservice.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Category {
@@ -12,17 +14,20 @@ public class Category {
     @Column(length = 100)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "question_id")
-    private Question question;
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "category")
+    private List<Question> questions = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "category")
+    private List<Subcategory> subcategories = new ArrayList<>();
 
     public Category() {
     }
 
-    public Category(Long id, String name, Question question) {
+    public Category(Long id, String name, List<Question> questions, List<Subcategory> subcategories) {
         this.id = id;
         this.name = name;
-        this.question = question;
+        this.questions = questions;
+        this.subcategories = subcategories;
     }
 
     public Category(Long id, String name) {
@@ -46,11 +51,19 @@ public class Category {
         this.name = name;
     }
 
-    public Question getQuestion() {
-        return question;
+    public List<Question> getQuestions() {
+        return questions;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+
+    public List<Subcategory> getSubcategories() {
+        return subcategories;
+    }
+
+    public void setSubcategories(List<Subcategory> subcategories) {
+        this.subcategories = subcategories;
     }
 }

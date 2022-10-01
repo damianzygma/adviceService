@@ -21,8 +21,14 @@ public class Question {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date questionDate;
 
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "question")
-    private Set<Category> category = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "subcategory_id")
+    private Subcategory subcategory;
+
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH, mappedBy = "question")
     private List<Answer> answers = new ArrayList<>();
@@ -30,12 +36,13 @@ public class Question {
     public Question() {
     }
 
-    public Question(Long id, User user, String description, Date questionDate, Set<Category> category, List<Answer> answers) {
+    public Question(Long id, User user, String description, Date questionDate, Category category, Subcategory subcategory, List<Answer> answers) {
         this.id = id;
         this.user = user;
         this.description = description;
         this.questionDate = questionDate;
         this.category = category;
+        this.subcategory = subcategory;
         this.answers = answers;
     }
 
@@ -71,11 +78,11 @@ public class Question {
         this.questionDate = questionDate;
     }
 
-    public Set<Category> getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Set<Category> category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -85,5 +92,13 @@ public class Question {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public Subcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(Subcategory subcategory) {
+        this.subcategory = subcategory;
     }
 }
