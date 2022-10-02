@@ -15,8 +15,11 @@ public class Question {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @Column(length = 150)
+    private String questionSubject;
+
     @Column(length = 3000)
-    private String description;
+    private String questionDetails;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date questionDate;
@@ -36,10 +39,12 @@ public class Question {
     public Question() {
     }
 
-    public Question(Long id, User user, String description, Date questionDate, Category category, Subcategory subcategory, List<Answer> answers) {
+    public Question(Long id, User user, String questionSubject, String questionDetails, Date questionDate, Category category,
+                    Subcategory subcategory, List<Answer> answers) {
         this.id = id;
         this.user = user;
-        this.description = description;
+        this.questionSubject = questionSubject;
+        this.questionDetails = questionDetails;
         this.questionDate = questionDate;
         this.category = category;
         this.subcategory = subcategory;
@@ -62,12 +67,12 @@ public class Question {
         this.user = user;
     }
 
-    public String getDescription() {
-        return description;
+    public String getQuestionDetails() {
+        return questionDetails;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setQuestionDetails(String questionDetails) {
+        this.questionDetails = questionDetails;
     }
 
     public Date getQuestionDate() {
@@ -100,5 +105,13 @@ public class Question {
 
     public void setSubcategory(Subcategory subcategory) {
         this.subcategory = subcategory;
+    }
+
+    public String getQuestionSubject() {
+        return questionSubject;
+    }
+
+    public void setQuestionSubject(String questionSubject) {
+        this.questionSubject = questionSubject;
     }
 }

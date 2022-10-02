@@ -11,15 +11,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
-    private static final String[] PUBLIC_MATCHERS = {
-            "css/**",
-            "js/**",
-            "img/**",
-            "scss/**",
-            "vendor/**",
-            "static/**"
-    };
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
