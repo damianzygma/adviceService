@@ -25,6 +25,12 @@ public class User {
     @Column(nullable = false, length = 20)
     private String lastName;
 
+    @Column(length = 20)
+    private String nickname;
+
+    @Column
+    String role = "USER_ROLE";
+
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "user")
     private List<Question> questions;
 

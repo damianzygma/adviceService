@@ -1,15 +1,24 @@
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\config\SecurityConfig.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\TestowaClassa.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\service\UserService.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\model\Answer.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\TestClass.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\model\Comment.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\model\Question.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\repository\QuestionRepository.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\model\User.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\model\Category.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\service\QuestionService.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\controller\QuestionsController.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\AdviceServiceApplication.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\repository\UserRepository.java
-C:\Users\Piotr i Madzia\IdeaProjects\adviceService\adviceservice\src\main\java\pl\com\mtd\adviceservice\controller\AppController.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\config\SecurityConfig.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\service\OursUserDetailsService.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\model\User.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\repository\UserRepository.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\config\PasswordEncoder.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\controller\CommentController.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\controller\QuestionsController.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\config\WebConfig.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\controller\CategoryController.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\model\Subcategory.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\service\UserService.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\service\QuestionService.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\AdviceServiceApplication.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\model\Comment.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\repository\QuestionRepository.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\config\DataSourceConfig.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\controller\UserController.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\service\CategoryService.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\model\Answer.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\model\Category.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\controller\HomeController.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\config\OursUserDetails.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\service\CommentService.java
+D:\JAVA\ProjektKoncowy\adviceService\AdviceService\src\main\java\pl\com\mtd\adviceservice\model\Question.java
