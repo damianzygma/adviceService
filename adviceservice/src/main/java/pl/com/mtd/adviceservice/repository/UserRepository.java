@@ -7,5 +7,5 @@ import pl.com.mtd.adviceservice.model.User;
 
 public interface UserRepository extends JpaRepository<User,Long> {
 
-    User getUserByNickname(String nickname);
+    User findUserByNickname(String nickname);
 }
