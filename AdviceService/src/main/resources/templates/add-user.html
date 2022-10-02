@@ -78,9 +78,12 @@
                     </div>
             
                     <div class="row mb-3">
-                      <label for="password-recovery-question" class="col-md-4 col-lg-3 col-form-label add-user">Password recovery question</label>
+<!--                      <label for="password-recovery-question" class="col-md-4 col-lg-3 col-form-label add-user">Password recovery question</label>-->
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" id="password-recovery-question" class="form-control" placeholder="Password recovery question" th:field="*{questionForPassword}" required minlength="10" maxlength="64">
+                          <select class="form-control" id="list" th:field="*{questionForPassword}">
+                              <option th:each="i:${QuestionList}" th:value="${i}" th:text="${i}" ></option>
+                          </select>
+<!--                        <input type="text" id="password-recovery-question" class="form-control" placeholder="Password recovery question" th:field="*{questionForPassword}" required minlength="10" maxlength="64">-->
                       </div>
                     </div>
             
