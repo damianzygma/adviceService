@@ -28,11 +28,17 @@ public class User {
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "user")
     private List<Question> questions;
 
+    @Column(unique = true, length = 20)
+    private String nickname;
+
+    @Column
+    private String authority;
+
     public User() {
     }
 
     public User(Long id, String email, String password, String questionForPassword, String questionAnswer,
-                String firstName, String lastName, List<Question> questions) {
+                String firstName, String lastName, List<Question> questions, String nickname, String authority) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -41,6 +47,8 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.questions = questions;
+        this.nickname = nickname;
+        this.authority = authority;
     }
 
     public Long getId() {
@@ -105,5 +113,21 @@ public class User {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 }

@@ -1,0 +1,1 @@
+INSERT INTO users values (1, 'madzia123@gmail.com', 'Madzia', 'Kowalska', 'meggi123', 'user1234', 'Podaj nazwisko panieńskie matki', 'Nowak', 'USER');
