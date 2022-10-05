@@ -31,8 +31,8 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img th:src="@{img/user.jpg}" src="../static/img/user.jpg" alt="Profile" class="rounded-circle">
-              <h2>Name and Surname</h2>
+              <img th:src="@{/img/user.jpg}" src="../static/img/user.jpg" alt="Profile" class="rounded-circle">
+              <h2><th:block th:text="${userProfile.name} + ' ' + ${userProfile.surname}"></th:block> </h2>
     
               
             </div>
@@ -56,7 +56,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Your activity</button>
                 </li>
 
               </ul>
@@ -66,104 +66,108 @@
                   
                   <h3 class="card-title">Profile Details</h3>
                     <br>
-
+                  <form th:object="${user}" th:action="@{/user}" method="get" class="form-horizontal">
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label user-content">Name</div>
-                    <div class="col-lg-9 col-md-8 user-content">Kevin </div>
+                    <div class="col-lg-9 col-md-8 user-content" th:text="${userProfile.name}"></div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label user-content">Surname</div>
-                    <div class="col-lg-9 col-md-8 user-content">Anderson</div>
+                    <div class="col-lg-9 col-md-8 user-content" th:text="${userProfile.surname}"></div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label user-content">Nickname</div>
-                    <div class="col-lg-9 col-md-8 user-content">Kevin123</div>
+                    <div class="col-lg-9 col-md-8 user-content" th:text="${userProfile.nickname}"></div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label user-content">e-mail</div>
-                    <div class="col-lg-9 col-md-8 user-content">kevinanderson@gmail.com</div>
+                    <div class="col-lg-9 col-md-8 user-content" th:text="${userProfile.email}"></div>
                   </div>
-
-
+                  </form>
+                  <form th:object="${userProfile}" th:action="@{/deleteLogout}" method="post" class="form-horizontal">
+                  <div>
+                    <input type="button" th:onclick="|window.location.href='@{/user/password}'|" class="btn btn-primary" value="Change password">
+                    <button type="submit" class="btn btn-primary">Delete profile</button>
+                  </div>
+                  </form>
                 </div>
 
-                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                  <form th:object="${userProfile}" th:action="@{/user/{nickname}}" method="post" class="form-horizontal">
                   <!-- Profile Edit Form -->
-                  <form>
-                   
 
                     <div class="row mb-3">
                       <label for="name" class="col-md-4 col-lg-3 col-form-label user-content">Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="name" type="text" class="form-control" id="name" value="Kevin">
+                        <input th:field="*{name}" type="text" class="form-control" id="name" th:value="${userProfile.name}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="surname" class="col-md-4 col-lg-3 col-form-label user-content">Surname</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="surname" type="text" class="form-control" id="surname" value="Anderson">
+                        <input th:field="*{surname}" type="text" class="form-control" id="surname" th:value="${userProfile.surname}">
                       </div>
                     </div>
 
-                    <div class="row mb-3">
-                      <label for="nickname" class="col-md-4 col-lg-3 col-form-label user-content">Nickname</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="nickname" type="text" class="form-control" id="nickname" value="Kevin123">
-                      </div>
-                    </div>
+<!--                    <div class="row mb-3">-->
+<!--                      <label for="nickname" class="col-md-4 col-lg-3 col-form-label user-content">Nickname</label>-->
+<!--                      <div class="col-md-8 col-lg-9">-->
+<!--                        <input th:field="*{nickname}" type="text" class="form-control" id="nickname" th:value="${userProfile.nickname}">-->
+<!--                      </div>-->
+<!--                    </div>-->
 
                     <div class="row mb-3">
                       <label for="email" class="col-md-4 col-lg-3 col-form-label user-content">e-mail</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="text" class="form-control" id="email" value="kevinanderson@gmail.com">
+                        <input th:field="*{email}" type="text" class="form-control" id="email" th:value="${userProfile.email}">
                       </div>
                     </div>
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
-                      <button type="submit" class="btn btn-primary">Delete user</button>
+<!--                      <button type="submit" class="btn btn-primary">Delete user</button>-->
                     </div>
-                  </form><!-- End Profile Edit Form -->
-
+                  </form>
+                  <!-- End Profile Edit Form -->
                 </div>
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
-                  <form>
 
-                    <div class="row mb-3">
-                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label user-content">Current Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="currentPassword">
-                      </div>
-                    </div>
 
-                    <div class="row mb-3">
-                      <label for="newPassword" class="col-md-4 col-lg-3 col-form-label user-content">New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control" id="newPassword">
-                      </div>
+                  <div class="d-md-flex 2 half lists">
+                    <p class="col-1 thumbnail">
+                      <img th:src="@{/img/question11.jpg}" src="assets/img/question11.jpg" alt="" class="img-fluid">
+                    </p>
+                    <div class="lists">
+                      <h5><a href="single-post.html" >Your questions</a></h5>
                     </div>
+                  </div>
 
-                    <div class="row mb-3">
-                      <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label user-content">Re-enter New Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
-                      </div>
+                  <div class="d-md-flex 2 half lists">
+                    <p class="col-1 thumbnail">
+                      <img th:src="@{/img/answer.jpg}" src="assets/img/answer.jpg" alt="" class="img-fluid">
+                    </p>
+                    <div class="lists">
+                      <h5><a href="single-post.html" >Your answers</a></h5>
                     </div>
+                  </div>
 
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Change Password</button>
+                  <div class="d-md-flex 2 half lists">
+                    <p class="col-1 thumbnail">
+                      <img th:src="@{/img/comment4.jpg}" src="assets/img/comment4.jpg" alt="" class="img-fluid">
+                    </p>
+                    <div class="lists">
+                      <h5><a href="single-post.html" >Your comments</a></h5>
                     </div>
-                  </form><!-- End Change Password Form -->
+                  </div>
 
                 </div>
-
               </div><!-- End Bordered Tabs -->
 
             </div>

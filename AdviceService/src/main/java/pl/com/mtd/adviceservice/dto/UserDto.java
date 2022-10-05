@@ -3,13 +3,13 @@ package pl.com.mtd.adviceservice.dto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserAddDto {
+public class UserDto {
 
     private String name;
     private String surname;
-    private String password;
     private String nickname;
     private String email;
+    private String password;
     private String questionForPassword;
     private String answerForQuestion;
 

@@ -6,18 +6,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import pl.com.mtd.adviceservice.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
-
-    @Autowired
-    private UserService userService;
 
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -30,9 +29,17 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/login1")
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/addQuestion")
-                .authenticated()
-                .anyRequest().permitAll();
+                .antMatchers(HttpMethod.GET,"/addQuestion").authenticated()
+                .and()
+                .authorizeRequests()
+                .antMatchers(HttpMethod.GET, "/user/{nickname}").authenticated()
+                .anyRequest().permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/deleteLogout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/");
     }
 
 //    @Bean

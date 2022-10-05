@@ -1,11 +1,16 @@
 package pl.com.mtd.adviceservice.service;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.com.mtd.adviceservice.converter.UserAddConverter;
-import pl.com.mtd.adviceservice.dto.UserAddDto;
+import pl.com.mtd.adviceservice.converter.PasswordConverter;
+import pl.com.mtd.adviceservice.converter.UserConverter;
+import pl.com.mtd.adviceservice.converter.UserProfileConverter;
+import pl.com.mtd.adviceservice.dto.PasswordDto;
+import pl.com.mtd.adviceservice.dto.UserDto;
+import pl.com.mtd.adviceservice.dto.UserProfileDto;
 import pl.com.mtd.adviceservice.model.DefaultUserDetails;
 import pl.com.mtd.adviceservice.model.User;
 import pl.com.mtd.adviceservice.repository.UserRepository;
@@ -17,30 +22,32 @@ import java.util.Optional;
 public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
-    private final UserAddConverter userAddConverter;
+    private final UserConverter userConverter;
 
-    public UserService(UserRepository userRepository, UserAddConverter userAddConverter) {
+
+    public UserService(UserRepository userRepository, UserConverter userConverter) {
         this.userRepository = userRepository;
-        this.userAddConverter = userAddConverter;
+        this.userConverter = userConverter;
     }
 
-    public void addUser(UserAddDto userAddDto){
-        User user = userAddConverter.userAddDtoToEntity(userAddDto);
+    public void addUser(UserDto userDto){
+        if(!isUserExist(userDto.getEmail())){
+        User user = userConverter.convertUserDtoToEntity(userDto);
+        user.setAuthority("USER");
         userRepository.save(user);
-        System.out.println("adding a new user: " + user.getId());
+        System.out.println("adding a new user: " + user.getId());}
     }
 
-    public void editUser(UserAddDto newUserAddDto){
-        User newUser = userAddConverter.userAddDtoToEntity(newUserAddDto);
-        userRepository.save(newUser);
+    public void editUser(User user){
+        userRepository.save(user);
     }
 
     public void deleteUser(Long id){
         userRepository.deleteById(id);
     }
 
-    public Optional<User> getUserById(Long id){
-        return userRepository.findById(id);
+    public User getUserById(Long id){
+        return userRepository.findById(id).orElse(null);
     }
 
     public List<User> getAllUsers(){
@@ -55,8 +62,8 @@ public class UserService implements UserDetailsService {
         return userFromDatabase.isPresent();
     }
 
-    public Optional<User> getUserByNickname(String loggedUserName) {
-        return Optional.ofNullable(userRepository.findUserByNickname(loggedUserName));
+    public User getUserByNickname(String loggedUserName) {
+        return userRepository.findUserByNickname(loggedUserName);
     }
 
     @Override
@@ -65,4 +72,14 @@ public class UserService implements UserDetailsService {
         DefaultUserDetails defaultUserDetails = new DefaultUserDetails(userByNickname.getPassword(), userByNickname.getNickname(), userByNickname.getAuthority());
         return defaultUserDetails;
     }
+
+    public String getLoggedUserName(){
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(principal instanceof UserDetails) {
+            return  ((UserDetails)principal).getUsername();
+        } else {
+            return principal.toString();
+        }
+    }
+
 }

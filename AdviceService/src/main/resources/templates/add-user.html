@@ -39,11 +39,11 @@
         </div>
 
         <div class="col-xl-8">   
-            <form th:action="@{/add-user}" method="post" th:object="${user}">
+            <form th:action="@{/register}" method="post" th:object="${user}">
                     <div class="row mb-3">
                       <label for="name" class="col-md-4 col-lg-3 col-form-label add-user">Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" id="name" class="form-control" placeholder="Add your name" th:field="*{firstName}" required
+                        <input type="text" id="name" class="form-control" placeholder="Add your name" th:field="*{name}" required
                                minlength="2" maxlength="20">
                       </div>
                     </div>
@@ -51,7 +51,7 @@
                     <div class="row mb-3">
                       <label for="surname" class="col-md-4 col-lg-3 col-form-label add-user">Surname</label>
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" id="surname" class="form-control" placeholder="Add your surname" th:field="*{lastName}" required
+                        <input type="text" id="surname" class="form-control" placeholder="Add your surname" th:field="*{surname}" required
                                minlength="2" maxlength="20">
                       </div>
                     </div>
@@ -59,7 +59,8 @@
                     <div class="row mb-3">
                       <label for="nickname" class="col-md-4 col-lg-3 col-form-label add-user">Nickname</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="nickname" type="text" class="form-control" id="nickname" placeholder="Add your nickname">
+                        <input type="text" class="form-control" id="nickname" placeholder="Add your nickname" th:field="*{nickname}" required
+                               minlength="2" maxlength="20">
                       </div>
                     </div>
 
@@ -73,24 +74,24 @@
                     <div class="row mb-3">
                       <label for="password" class="col-md-4 col-lg-3 col-form-label add-user">Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input th:field="*{password}" required minlength="6" maxlength="10" type="password" id="password" class="form-control" placeholder="Password" >
+                        <input th:field="*{password}" required minlength="6" maxlength="20" type="password" id="password" class="form-control" placeholder="Password" >
                       </div>
                     </div>
             
                     <div class="row mb-3">
-<!--                      <label for="password-recovery-question" class="col-md-4 col-lg-3 col-form-label add-user">Password recovery question</label>-->
+                      <label for="password question" class="col-md-4 col-lg-3 col-form-label add-user">Password recovery question</label>
                       <div class="col-md-8 col-lg-9">
-                          <select class="form-control" id="list" th:field="*{questionForPassword}">
+                          <select class="form-group select-user sel-1" id="password question" th:field="*{questionForPassword}">
+                              <option hidden value="">Choose your question</option>
                               <option th:each="i:${QuestionList}" th:value="${i}" th:text="${i}" ></option>
                           </select>
-<!--                        <input type="text" id="password-recovery-question" class="form-control" placeholder="Password recovery question" th:field="*{questionForPassword}" required minlength="10" maxlength="64">-->
                       </div>
                     </div>
             
                     <div class="row mb-3">
                       <label for="answer" class="col-md-4 col-lg-3 col-form-label add-user">Answer</label>
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" id="answer" class="form-control" placeholder="Answer for your question" th:field="*{questionAnswer}" required minlength="1" maxlength="64">
+                        <input type="text" id="answer" class="form-control" placeholder="Answer for your question" th:field="*{answerForQuestion}" required minlength="1" maxlength="64">
                       </div>
                     </div>
 
