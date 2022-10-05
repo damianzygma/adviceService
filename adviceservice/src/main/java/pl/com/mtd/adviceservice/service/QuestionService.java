@@ -2,7 +2,7 @@ package pl.com.mtd.adviceservice.service;
 
 import org.springframework.stereotype.Service;
 import pl.com.mtd.adviceservice.converter.QuestionConverter;
-import pl.com.mtd.adviceservice.converter.UserConverter;
+import pl.com.mtd.adviceservice.converter.UserProfileConverter;
 import pl.com.mtd.adviceservice.dto.QuestionDto;
 import pl.com.mtd.adviceservice.model.Category;
 import pl.com.mtd.adviceservice.model.Question;
@@ -17,19 +17,19 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
 
     private final CategoryRepository categoryRepository;
-    private final UserConverter userConverter;
+    private final UserProfileConverter userProfileConverter;
     private final QuestionConverter questionConverter;
 
-    public QuestionService(QuestionRepository questionRepository, CategoryRepository categoryRepository, UserConverter userConverter,
+    public QuestionService(QuestionRepository questionRepository, CategoryRepository categoryRepository, UserProfileConverter userProfileConverter,
                            QuestionConverter questionConverter) {
         this.questionRepository = questionRepository;
         this.categoryRepository = categoryRepository;
-        this.userConverter = userConverter;
+        this.userProfileConverter = userProfileConverter;
         this.questionConverter = questionConverter;
     }
 
     public void addQuestion(QuestionDto questionDto){
-        Question question = questionConverter.convertQuestionAddDtoToEntity(questionDto);
+        Question question = questionConverter.convertQuestionDtoToEntity(questionDto);
         if(questionDto.getCategoryId() == null){
             if(questionDto.getCategoryName() != null){
                 Category category = new Category();

@@ -981,6 +981,17 @@ section {
   margin-right: auto;
   width: 70%;
 }
+
+.select-user{
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid lightgray;
+  border-radius: 0.35em;
+}
+
+.lists{
+  padding: 0.5em 2em;
+}
 /*--------------------------------------------------------------
 # Comments
 --------------------------------------------------------------*/
@@ -1252,7 +1263,7 @@ section {
   background: rgba(var(--color-primary-rgb), 0.8);
 }
 
-#sel1 {
+.sel1 {
   color: var(--color-primary);
   border: 1px solid rgba(var(--color-secondary-rgb), 0.2);
   padding: 10px 14px;

@@ -7,15 +7,15 @@ import java.util.Date;
 @Component
 public class QuestionDto {
 
-
     private Long categoryId;
     private Long userId;
-    private Long subcategoryId;
     private String categoryName;
-    private String subcategoryName;
+    private String questionSubject;
     private String questionDetails;
-
     private Date questionDate;
+    private String userNickname;
+    private String userEmail;
+
 
     public Long getCategoryId() {
         return categoryId;
@@ -33,28 +33,12 @@ public class QuestionDto {
         this.userId = userId;
     }
 
-    public Long getSubcategoryId() {
-        return subcategoryId;
-    }
-
-    public void setSubcategoryId(Long subcategoryId) {
-        this.subcategoryId = subcategoryId;
-    }
-
     public String getCategoryName() {
         return categoryName;
     }
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
-    }
-
-    public String getSubcategoryName() {
-        return subcategoryName;
-    }
-
-    public void setSubcategoryName(String subcategoryName) {
-        this.subcategoryName = subcategoryName;
     }
 
     public String getQuestionDetails() {
@@ -71,5 +55,29 @@ public class QuestionDto {
 
     public void setQuestionDate(Date questionDate) {
         this.questionDate = questionDate;
+    }
+
+    public String getQuestionSubject() {
+        return questionSubject;
+    }
+
+    public void setQuestionSubject(String questionSubject) {
+        this.questionSubject = questionSubject;
+    }
+
+    public String getUserNickname() {
+        return userNickname;
+    }
+
+    public void setUserNickname(String userNickname) {
+        this.userNickname = userNickname;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

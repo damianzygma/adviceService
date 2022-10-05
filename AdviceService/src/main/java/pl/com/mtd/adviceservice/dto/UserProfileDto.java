@@ -10,7 +10,7 @@ public class UserProfileDto {
     private String surname;
     private String nickname;
     private String email;
-    private String password;
+
 
     public Long getId() {
         return id;
@@ -52,11 +52,4 @@ public class UserProfileDto {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

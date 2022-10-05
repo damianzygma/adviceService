@@ -45,20 +45,11 @@ public class QuestionsController {
 
     @GetMapping("/addQuestion")
     public String getAddQuestion(Model model){
-        String loggedUserName = getLoggedUserName();
-        Optional<User> user = userService.getUserByNickname(loggedUserName);
+        String loggedUserName = userService.getLoggedUserName();
+        User user = userService.getUserByNickname(loggedUserName);
         model.addAttribute("user", user);
         model.addAttribute("question", new QuestionDto());
         return "add-question";
-    }
-
-    private String getLoggedUserName(){
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if(principal instanceof UserDetails) {
-            return  ((UserDetails)principal).getUsername();
-        } else {
-            return principal.toString();
-        }
     }
 
     @PostMapping("/addQuestion")
