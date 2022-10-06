@@ -16,10 +16,10 @@ public class PasswordConverter {
     }
    public User convertUserPasswordDtoToEntity(PasswordDto passwordDto){
        User user = userService.getUserByNickname(userService.getLoggedUserName());
-       String currentPassword = "{noop}" + passwordDto.getCurrentPassword();
+       String currentPassword =  passwordDto.getCurrentPassword();
        if(currentPassword.equals(user.getPassword())){
            if(passwordDto.getNewPassword().equals(passwordDto.getReenteredNewPassword())){
-               user.setPassword("{noop}" + passwordDto.getNewPassword());
+               user.setPassword( passwordDto.getNewPassword());
            }
        }
        return user;

@@ -42,6 +42,7 @@ public class UserController {
                 "What is the name of the town where you were born?");
         model.addAttribute("QuestionList", helperQuestion);
         model.addAttribute("user", new UserDto());
+
         return "add-user";
     }
 

@@ -4,13 +4,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.com.mtd.adviceservice.converter.PasswordConverter;
 import pl.com.mtd.adviceservice.converter.UserConverter;
-import pl.com.mtd.adviceservice.converter.UserProfileConverter;
-import pl.com.mtd.adviceservice.dto.PasswordDto;
 import pl.com.mtd.adviceservice.dto.UserDto;
-import pl.com.mtd.adviceservice.dto.UserProfileDto;
 import pl.com.mtd.adviceservice.model.DefaultUserDetails;
 import pl.com.mtd.adviceservice.model.User;
 import pl.com.mtd.adviceservice.repository.UserRepository;
@@ -23,17 +20,21 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final UserConverter userConverter;
+    private final PasswordEncoder passwordEncoder;
 
 
-    public UserService(UserRepository userRepository, UserConverter userConverter) {
+    public UserService(UserRepository userRepository, UserConverter userConverter, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userConverter = userConverter;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public void addUser(UserDto userDto){
         if(!isUserExist(userDto.getEmail())){
         User user = userConverter.convertUserDtoToEntity(userDto);
-        user.setAuthority("USER");
+            String password = user.getPassword();
+            user.setPassword(passwordEncoder.encode(password));
+            user.setAuthority("USER");
         userRepository.save(user);
         System.out.println("adding a new user: " + user.getId());}
     }
