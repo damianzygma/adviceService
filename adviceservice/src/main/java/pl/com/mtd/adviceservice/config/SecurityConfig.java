@@ -16,7 +16,7 @@ import pl.com.mtd.adviceservice.service.UserService;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig  extends WebSecurityConfigurerAdapter {
+public class  SecurityConfig  extends WebSecurityConfigurerAdapter {
 
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -42,9 +42,6 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/");
     }
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder(){
-//        return new BCryptPasswordEncoder();
-//    }
+
 
 }
