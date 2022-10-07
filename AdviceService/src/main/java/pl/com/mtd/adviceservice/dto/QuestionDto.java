@@ -1,10 +1,7 @@
 package pl.com.mtd.adviceservice.dto;
 
-import com.sun.istack.NotNull;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Column;
 import java.time.LocalDate;
 import java.util.List;
 

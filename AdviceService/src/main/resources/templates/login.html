@@ -37,27 +37,29 @@
             <div class="card mb-3">
 
               <div class="card-body">
-
-                <div class="pt-4 pb-2">
+                <form th:action="@{/login1}" method="post" class="form-horizontal">
+                  <div class="row mb-3">
+                    <div class="col-md-8 col-lg-12">
                   <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                   <p class="text-center small">Enter your username & password to login</p>
                 </div>
+                  </div>
 
-                <form th:action="@{/login1}" method="post" class="form-horizontal">
-
-                  <div class="col-12">
-
-                    <label for="yourUsername" class="form-label">Username</label>
+                  <div class="row mb-3">
+                    <div class="col-md-8 col-lg-12">
+                    <label for="yourUsername" class="col-md-4 col-lg-3 col-form-label user-content">Username</label>
                     <div class="input-group has-validation">
                       <input type="text" name="username" class="form-control" id="yourUsername" required>
                       <div class="invalid-feedback">Please enter your username.</div>
                     </div>
                   </div>
-
-                  <div class="col-12">
-                    <label for="yourPassword" class="form-label">Password</label>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-8 col-lg-12">
+                    <label for="yourPassword" class="col-md-4 col-lg-3 col-form-label user-content">Password</label>
                     <input type="password" name="password" class="form-control" id="yourPassword" required>
                     <div class="invalid-feedback">Please enter your password!</div>
+                  </div>
                   </div>
 
                   <!--
@@ -68,15 +70,14 @@
                                         </div>
                                       </div>
                   -->
-                  <div class="col-12">
-                    <input type="submit"
-                           class="btn btn-block btn-primary btn-default" value="Login">
+
+                  <div class="text-center">
+                    <input type="submit" class="btn btn-primary" value="Login">
                   </div>
-                  <div class="col-12">
+                  <div class="text-center">
                     <p class="small "> Don't have account? <a th:href="@{/register}" class="create-account">  Create an account</a></p>
                   </div>
                 </form>
-
               </div>
             </div>
 
