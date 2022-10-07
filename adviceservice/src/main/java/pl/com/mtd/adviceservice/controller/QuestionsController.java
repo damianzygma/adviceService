@@ -5,17 +5,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
+import pl.com.mtd.adviceservice.converter.QuestionConverter;
+import pl.com.mtd.adviceservice.dto.CategoryDto;
 import pl.com.mtd.adviceservice.dto.QuestionDto;
+import pl.com.mtd.adviceservice.model.Category;
 import pl.com.mtd.adviceservice.model.Question;
 import pl.com.mtd.adviceservice.model.User;
 import pl.com.mtd.adviceservice.service.QuestionService;
 import pl.com.mtd.adviceservice.service.UserService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,17 +28,19 @@ import java.util.Optional;
 public class QuestionsController {
 
     private final QuestionService questionService;
+    private final QuestionConverter questionConverter;
     private final UserService userService;
 
-    public QuestionsController(QuestionService questionService, UserService userProfileService) {
+    public QuestionsController(QuestionService questionService, QuestionConverter questionConverter, UserService userService) {
         this.questionService = questionService;
-        this.userService = userProfileService;
+        this.questionConverter = questionConverter;
+        this.userService = userService;
     }
 
     @GetMapping("/questions")
-    public String getAllQuestionsFromCategory(Model model){
-        List<Question> questions = questionService.getQuestions();
-        model.addAttribute("questions", questions);
+    public String getAllQuestionsFromCategory(){
+//        List<Question> questions = questionService.getQuestions();
+//        model.addAttribute("questions", questions);
         return "category";
     }
 
@@ -45,17 +52,18 @@ public class QuestionsController {
 
     @GetMapping("/addQuestion")
     public String getAddQuestion(Model model){
-        String loggedUserName = userService.getLoggedUserName();
-        User user = userService.getUserByNickname(loggedUserName);
-        model.addAttribute("user", user);
-        model.addAttribute("question", new QuestionDto());
+        QuestionDto questionDto = questionConverter.convertEntityToQuestionDto();
+        model.addAttribute("question", questionDto);
         return "add-question";
     }
 
     @PostMapping("/addQuestion")
-    public RedirectView saveQuestion(@ModelAttribute QuestionDto questionDto){
+    public String saveQuestion(@Valid @ModelAttribute QuestionDto questionDto, BindingResult result){
+        if(result.hasErrors()){
+            return "add-question";
+        }
         questionService.addQuestion(questionDto);
-        return new RedirectView("/questions");
+        return "redirect:/questions";
     }
 
     @GetMapping("/editQuestion/{id}")

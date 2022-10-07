@@ -1,21 +1,35 @@
 package pl.com.mtd.adviceservice.dto;
 
+import com.sun.istack.NotNull;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
+import javax.persistence.Column;
+import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class QuestionDto {
 
+    private List<CategoryDto> categories;
     private Long categoryId;
-    private Long userId;
-    private String categoryName;
     private String questionSubject;
     private String questionDetails;
-    private Date questionDate;
+    private LocalDate questionDate;
     private String userNickname;
     private String userEmail;
 
+    private String categoryName;
+
+    private boolean isRequired;
+
+    public List<CategoryDto> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<CategoryDto> categories) {
+        this.categories = categories;
+    }
 
     public Long getCategoryId() {
         return categoryId;
@@ -23,22 +37,6 @@ public class QuestionDto {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
     }
 
     public String getQuestionDetails() {
@@ -49,11 +47,11 @@ public class QuestionDto {
         this.questionDetails = questionDetails;
     }
 
-    public Date getQuestionDate() {
+    public LocalDate getQuestionDate() {
         return questionDate;
     }
 
-    public void setQuestionDate(Date questionDate) {
+    public void setQuestionDate(LocalDate questionDate) {
         this.questionDate = questionDate;
     }
 
@@ -79,5 +77,21 @@ public class QuestionDto {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public boolean isRequired() {
+        return isRequired;
+    }
+
+    public void setRequired(boolean required) {
+        isRequired = required;
     }
 }

@@ -1,19 +1,18 @@
 package pl.com.mtd.adviceservice.converter;
 
+import org.springframework.stereotype.Component;
 import pl.com.mtd.adviceservice.dto.CategoryDto;
 import pl.com.mtd.adviceservice.model.Category;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+@Component
 public class CategoryConverter {
 
     public Category convertCategoryDtoToEntity(CategoryDto categoryDto) {
         Category category = new Category();
         category.setName(categoryDto.getCategoryName());
-        category.getQuestions().forEach(question -> question.setId(categoryDto.getQuestionId()));
-        category.getQuestions().forEach(question -> question.getUser().setId(categoryDto.getUserId()));
-        category.getQuestions().forEach(question -> question.getUser().setNickname(categoryDto.getUserNickname()));
-        category.getQuestions().forEach(question -> question.setQuestionDate(categoryDto.getQuestionDate()));
-        category.getQuestions().forEach(question -> question.setQuestionSubject(categoryDto.getQuestionSubject()));
-        category.getQuestions().forEach(question -> question.setQuestionDetails(categoryDto.getQuestionDetails()));
         return category;
     }
 
@@ -22,6 +21,14 @@ public class CategoryConverter {
         dto.setCategoryId(category.getId());
         dto.setCategoryName(category.getName());
         return dto;
+    }
+
+    public List<CategoryDto> convertCategoryListToCategoryDtoList(List<Category> categories){
+        List<CategoryDto> categoriesDto = categories
+                .stream()
+                .map(this::convertEntityToCategoryDto)
+                .collect(Collectors.toList());
+        return categoriesDto;
     }
 
 

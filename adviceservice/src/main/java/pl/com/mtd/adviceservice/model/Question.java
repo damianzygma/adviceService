@@ -2,6 +2,7 @@ package pl.com.mtd.adviceservice.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.*;
 
 @Entity
@@ -22,7 +23,7 @@ public class Question {
     private String questionDetails;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date questionDate;
+    private LocalDate questionDate;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -39,7 +40,7 @@ public class Question {
     public Question() {
     }
 
-    public Question(Long id, User user, String questionSubject, String questionDetails, Date questionDate, Category category,
+    public Question(Long id, User user, String questionSubject, String questionDetails, LocalDate questionDate, Category category,
                     Subcategory subcategory, List<Answer> answers) {
         this.id = id;
         this.user = user;
@@ -75,11 +76,11 @@ public class Question {
         this.questionDetails = questionDetails;
     }
 
-    public Date getQuestionDate() {
+    public LocalDate getQuestionDate() {
         return questionDate;
     }
 
-    public void setQuestionDate(Date questionDate) {
+    public void setQuestionDate(LocalDate questionDate) {
         this.questionDate = questionDate;
     }
 

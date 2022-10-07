@@ -55,39 +55,50 @@
 
         </div>
 
+
         <div class="form mt-5">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form th:action="@{/addQuestion}" method="post" th:object="${question}">
             <div class="row">
               <div class="form-group col-md-6">
-                <h2>Nickname</h2>
+                <h2><th:block th:text="${question.userNickname}"></th:block></h2>
               </div>
               <div class="form-group col-md-6">
-                <h2>E-mail</h2>
+                <h2><th:block th:text="${question.userEmail}"></th:block></h2>
               </div>
             </div>
-            <div class="row">
+            </br>
+            <h5>Choose one of the available categories or add new one</h5>
+            <div class="row mb-3">
             <div class="form-group col-md-7">
-                <select class="sel1">
-                    <option hidden>Choose category</option>
-                    <option>Car</option>
-                    <option>Book</option>
-                    <option>IT</option>
+                <select class="sel1" th:field="*{categoryId}">
+                    <option th:value="null">Add new category</option>
+                    <option th:each="i:${question.categories}" th:value="${i.getCategoryId()}" th:text="${i.getCategoryName()}"></option>
                 </select>
             </div>
-              <div class="form-group col-md-3">
-              <input type="text" class="form-control" name="category" id="category" placeholder="Category" required>
+              <div class="form-group col-md-5">
+              <input type="text" class="form-control" th:field="*{categoryName}" id="category" placeholder="Provide your own category">
+<!--                <ul>-->
+<!--                  <li th:each="err : ${#fields.errors('categoryName')}" th:text="${err}" class="error" />-->
+<!--                </ul>-->
+                </div>
             </div>
-                <div class="form-group col-md-2"><button type="submit">Add Category</button></div>
-            </div>
+            <div class="row mb-3">
             <div class="form-group">
-              <textarea class="form-control" name="question" rows="5" placeholder="Question" required></textarea>
+              <input type="text" class="form-control" th:field="*{questionSubject}" id="questionSubject" placeholder="Question Subject" required>
             </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your question has been sent. Thank you!</div>
             </div>
-            <div class="text-center"><button type="submit">Send Question</button></div>
+            <div class="row mb-3">
+            <div class="form-group">
+              <textarea class="form-control" th:field="*{questionDetails}" rows="5" placeholder="Question" required></textarea>
+            </div>
+            </div>
+
+<!--            <div class="my-3">-->
+<!--              <div class="loading">Loading</div>-->
+<!--              <div class="error-message"></div>-->
+<!--              <div class="sent-message">Your question has been sent. Thank you!</div>-->
+<!--            </div>-->
+            <div class="text-center"><button type="submit" class="btn btn-primary">Send Question</button></div>
           </form>
         </div><!-- End Contact Form -->
 

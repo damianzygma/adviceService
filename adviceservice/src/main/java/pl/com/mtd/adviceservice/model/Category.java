@@ -1,5 +1,9 @@
 package pl.com.mtd.adviceservice.model;
 
+import com.sun.istack.NotNull;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +15,9 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 100)
+    @NotNull
+    @Length(min = 2, max = 20, message = "Length must be between 2 and 20")
+    @Column(unique = true)
     private String name;
 
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "category")

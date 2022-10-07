@@ -24,7 +24,7 @@ public class Answer {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date answerDate;
 
-    private Integer Rating;
+    private Integer rating;
 
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "answer")
     private Set<Comment> comments = new HashSet<>();
@@ -42,7 +42,7 @@ public class Answer {
         this.user = user;
         this.description = description;
         this.answerDate = answerDate;
-        Rating = rating;
+        this.rating = rating;
         this.comments = comments;
         this.question = question;
     }
@@ -80,11 +80,11 @@ public class Answer {
     }
 
     public Integer getRating() {
-        return Rating;
+        return rating;
     }
 
     public void setRating(Integer rating) {
-        Rating = rating;
+        this.rating = rating;
     }
 
     public Set<Comment> getComments() {
