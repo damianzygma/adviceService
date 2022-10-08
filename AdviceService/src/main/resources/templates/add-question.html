@@ -60,10 +60,10 @@
           <form th:action="@{/addQuestion}" method="post" th:object="${question}">
             <div class="row">
               <div class="form-group col-md-6">
-                <h2><th:block th:text="${question.userNickname}"></th:block></h2>
+                <h2><th:block th:text="${loggedUser.nickname}"></th:block></h2>
               </div>
               <div class="form-group col-md-6">
-                <h2><th:block th:text="${question.userEmail}"></th:block></h2>
+                <h2><th:block th:text="${loggedUser.email}"></th:block></h2>
               </div>
             </div>
             </br>
@@ -72,14 +72,14 @@
             <div class="form-group col-md-7">
                 <select class="sel1" th:field="*{categoryId}">
                     <option th:value="null">Add new category</option>
-                    <option th:each="i:${question.categories}" th:value="${i.getCategoryId()}" th:text="${i.getCategoryName()}"></option>
+                    <option th:each="i:${categories}" th:value="${i.getCategoryId()}" th:text="${i.getCategoryName()}"></option>
                 </select>
             </div>
               <div class="form-group col-md-5">
               <input type="text" class="form-control" th:field="*{categoryName}" id="category" placeholder="Provide your own category">
-<!--                <ul>-->
-<!--                  <li th:each="err : ${#fields.errors('categoryName')}" th:text="${err}" class="error" />-->
-<!--                </ul>-->
+                <ul>
+                  <li th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}" class="error" />
+                </ul>
                 </div>
             </div>
             <div class="row mb-3">

@@ -2,6 +2,7 @@ package pl.com.mtd.adviceservice.service;
 
 import org.springframework.stereotype.Service;
 import pl.com.mtd.adviceservice.converter.CategoryConverter;
+import pl.com.mtd.adviceservice.dto.CategoryDto;
 import pl.com.mtd.adviceservice.dto.QuestionDto;
 import pl.com.mtd.adviceservice.model.Category;
 import pl.com.mtd.adviceservice.repository.CategoryRepository;
@@ -29,8 +30,8 @@ public class CategoryService {
         return category;
     }
 
-    public List<Category> getAllCategories(){
-       return categoryRepository.findAll();
+    public List<CategoryDto> getAllCategories(){
+       return categoryConverter.convertCategoryListToCategoryDtoList(categoryRepository.findAll());
     }
 
 

@@ -15,7 +15,7 @@ public class UserProfileConverter {
     }
 
     public User userProfileDtoToEntity(UserProfileDto userProfileDto) {
-        User user = userService.getUserByNickname(userService.getLoggedUserName());
+        User user = userService.getLoggedUserName();
         user.setFirstName(userProfileDto.getName());
         user.setLastName(userProfileDto.getSurname());
         user.setNickname(userProfileDto.getNickname());

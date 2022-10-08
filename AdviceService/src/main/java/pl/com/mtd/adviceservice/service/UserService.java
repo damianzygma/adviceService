@@ -69,12 +69,12 @@ public class UserService implements UserDetailsService {
         return defaultUserDetails;
     }
 
-    public String getLoggedUserName(){
+    public User getLoggedUserName(){
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if(principal instanceof UserDetails) {
-            return  ((UserDetails)principal).getUsername();
+            return  getUserByNickname(((UserDetails)principal).getUsername());
         } else {
-            return principal.toString();
+            return getUserByNickname(principal.toString());
         }
     }
 

@@ -15,7 +15,7 @@ public class PasswordConverter {
         this.userService = userService;
     }
    public User convertUserPasswordDtoToEntity(PasswordDto passwordDto){
-       User user = userService.getUserByNickname(userService.getLoggedUserName());
+       User user = userService.getLoggedUserName();
        String currentPassword = "{noop}" + passwordDto.getCurrentPassword();
        if(currentPassword.equals(user.getPassword())){
            if(passwordDto.getNewPassword().equals(passwordDto.getReenteredNewPassword())){

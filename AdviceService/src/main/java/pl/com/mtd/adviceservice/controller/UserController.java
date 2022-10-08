@@ -86,7 +86,7 @@ public class UserController {
 
     @PostMapping("/deleteLogout")
     public String deleteProfile(){
-        Long id = userService.getUserByNickname(userService.getLoggedUserName()).getId();
+        Long id = userService.getLoggedUserName().getId();
         userService.deleteUser(id);
 
         return "index";
