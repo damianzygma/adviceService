@@ -6,17 +6,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 import pl.com.mtd.adviceservice.converter.QuestionConverter;
+import pl.com.mtd.adviceservice.converter.validators.QuestionValidator;
 import pl.com.mtd.adviceservice.dto.CategoryDto;
 import pl.com.mtd.adviceservice.dto.QuestionDto;
 import pl.com.mtd.adviceservice.model.Category;
 import pl.com.mtd.adviceservice.model.Question;
 import pl.com.mtd.adviceservice.model.User;
+import pl.com.mtd.adviceservice.service.CategoryService;
 import pl.com.mtd.adviceservice.service.QuestionService;
 import pl.com.mtd.adviceservice.service.UserService;
 
@@ -28,13 +28,21 @@ import java.util.Optional;
 public class QuestionsController {
 
     private final QuestionService questionService;
-    private final QuestionConverter questionConverter;
     private final UserService userService;
+    private final QuestionValidator questionValidator;
+    private final CategoryService categoryService;
 
-    public QuestionsController(QuestionService questionService, QuestionConverter questionConverter, UserService userService) {
+    @ModelAttribute("loggedUser")
+    private User loggedUser(){
+        return userService.getLoggedUserName();
+    }
+
+    public QuestionsController(QuestionService questionService, UserService userService, QuestionValidator questionValidator,
+                               CategoryService categoryService) {
         this.questionService = questionService;
-        this.questionConverter = questionConverter;
         this.userService = userService;
+        this.questionValidator = questionValidator;
+        this.categoryService = categoryService;
     }
 
     @GetMapping("/questions")
@@ -50,10 +58,15 @@ public class QuestionsController {
         return "single-post";
     }
 
+    @InitBinder("questionDto")
+    private void initBinder(WebDataBinder binder) {
+        binder.addValidators(questionValidator);
+    }
     @GetMapping("/addQuestion")
     public String getAddQuestion(Model model){
-        QuestionDto questionDto = questionConverter.convertEntityToQuestionDto();
+        QuestionDto questionDto = new QuestionDto();
         model.addAttribute("question", questionDto);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "add-question";
     }
 

@@ -15,9 +15,6 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Length(min = 2, max = 20, message = "Length must be between 2 and 20")
-    @Column(unique = true)
     private String name;
 
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "category")
