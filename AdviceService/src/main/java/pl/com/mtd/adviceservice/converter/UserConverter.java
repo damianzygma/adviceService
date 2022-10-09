@@ -13,7 +13,7 @@ public class UserConverter {
         user.setLastName(userDto.getSurname());
         user.setNickname(userDto.getNickname());
         user.setEmail(userDto.getEmail());
-        user.setPassword("{noop}" + userDto.getPassword());
+//        user.setPassword(userDto.getPassword());
         user.setQuestionForPassword(userDto.getQuestionForPassword());
         user.setQuestionAnswer(userDto.getAnswerForQuestion());
         return user;
