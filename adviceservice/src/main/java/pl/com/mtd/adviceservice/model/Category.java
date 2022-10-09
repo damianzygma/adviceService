@@ -1,9 +1,5 @@
 package pl.com.mtd.adviceservice.model;
 
-import com.sun.istack.NotNull;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;

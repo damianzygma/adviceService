@@ -14,7 +14,7 @@ public class CommentController {
     }
 
     @GetMapping("/comment")
-    public String getAddCommentView(){
+    public String getAddCommentView() {
         return "leave-comment";
     }
 }

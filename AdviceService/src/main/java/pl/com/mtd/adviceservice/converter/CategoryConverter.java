@@ -16,14 +16,14 @@ public class CategoryConverter {
         return category;
     }
 
-    public CategoryDto convertEntityToCategoryDto(Category category){
+    public CategoryDto convertEntityToCategoryDto(Category category) {
         CategoryDto dto = new CategoryDto();
         dto.setCategoryId(category.getId());
         dto.setCategoryName(category.getName());
         return dto;
     }
 
-    public List<CategoryDto> convertCategoryListToCategoryDtoList(List<Category> categories){
+    public List<CategoryDto> convertCategoryListToCategoryDtoList(List<Category> categories) {
         List<CategoryDto> categoriesDto = categories
                 .stream()
                 .map(this::convertEntityToCategoryDto)

@@ -2,6 +2,7 @@ package pl.com.mtd.adviceservice.model;
 
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -24,7 +25,10 @@ public class Answer {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date answerDate;
 
-    private Integer rating;
+    @Column
+    private Integer ratingPositive;
+    @Column
+    private Integer ratingNegative;
 
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "answer")
     private Set<Comment> comments = new HashSet<>();
@@ -36,13 +40,13 @@ public class Answer {
     public Answer() {
     }
 
-    public Answer(Long id, User user, String description, Date answerDate, Integer rating, Set<Comment> comments,
-                  Question question) {
+    public Answer(Long id, User user, String description, Date answerDate, Integer ratingPositive, Integer ratingNegative, Set<Comment> comments, Question question) {
         this.id = id;
         this.user = user;
         this.description = description;
         this.answerDate = answerDate;
-        this.rating = rating;
+        this.ratingPositive = ratingPositive;
+        this.ratingNegative = ratingNegative;
         this.comments = comments;
         this.question = question;
     }
@@ -79,12 +83,20 @@ public class Answer {
         this.answerDate = answerDate;
     }
 
-    public Integer getRating() {
-        return rating;
+    public Integer getRatingPositive() {
+        return ratingPositive;
     }
 
-    public void setRating(Integer rating) {
-        this.rating = rating;
+    public void setRatingPositive(Integer ratingPositive) {
+        this.ratingPositive = ratingPositive;
+    }
+
+    public Integer getRatingNegative() {
+        return ratingNegative;
+    }
+
+    public void setRatingNegative(Integer ratingNegative) {
+        this.ratingNegative = ratingNegative;
     }
 
     public Set<Comment> getComments() {

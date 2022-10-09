@@ -66,7 +66,7 @@
                   
                   <h3 class="card-title">Profile Details</h3>
                     <br>
-                  <form th:object="${user}" th:action="@{/user}" method="get" class="form-horizontal">
+                  <form th:object="${userProfile}" th:action="@{/user}" method="get" class="form-horizontal">
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label user-content">Name</div>
                     <div class="col-lg-9 col-md-8 user-content" th:text="${userProfile.name}"></div>
@@ -97,7 +97,7 @@
 
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-                  <form th:object="${userProfile}" th:action="@{/user/{nickname}}" method="post" class="form-horizontal">
+                  <form th:object="${userProfile}" th:action="@{/user}" method="post" class="form-horizontal">
                   <!-- Profile Edit Form -->
 
                     <div class="row mb-3">

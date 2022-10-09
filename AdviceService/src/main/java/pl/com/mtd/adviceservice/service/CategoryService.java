@@ -21,19 +21,18 @@ public class CategoryService {
         this.categoryConverter = categoryConverter;
     }
 
-    public Category addNewCategory(QuestionDto questionDto){
+    public Category addNewCategory(QuestionDto questionDto) {
         Category category = new Category();
-        if(questionDto.getCategoryName() != null){
+        if (questionDto.getCategoryName() != null) {
             category.setName(questionDto.getCategoryName());
             categoryRepository.save(category);
         }
         return category;
     }
 
-    public List<CategoryDto> getAllCategories(){
-       return categoryConverter.convertCategoryListToCategoryDtoList(categoryRepository.findAll());
+    public List<CategoryDto> getAllCategories() {
+        return categoryConverter.convertCategoryListToCategoryDtoList(categoryRepository.findAll());
     }
-
 
 
 }

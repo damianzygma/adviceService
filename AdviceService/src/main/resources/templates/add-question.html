@@ -76,20 +76,20 @@
                 </select>
             </div>
               <div class="form-group col-md-5">
-              <input type="text" class="form-control" th:field="*{categoryName}" id="category" placeholder="Provide your own category">
-                <ul>
-                  <li th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}" class="error" />
-                </ul>
+              <input type="text" class="form-control" name="categoryName" th:field="*{categoryName}" id="category" placeholder="Provide your own category">
+               <label th:if="${#fields.hasErrors('categoryName')}" th:errors="*{categoryName}"></label>
                 </div>
             </div>
             <div class="row mb-3">
             <div class="form-group">
-              <input type="text" class="form-control" th:field="*{questionSubject}" id="questionSubject" placeholder="Question Subject" required>
+              <input type="text" class="form-control" name="questionSubject" th:field="*{questionSubject}" id="questionSubject" placeholder="Question Subject" required>
+              <label th:if="${#fields.hasErrors('questionSubject')}" th:errors="*{questionSubject}" class="error"></label>
             </div>
             </div>
             <div class="row mb-3">
             <div class="form-group">
-              <textarea class="form-control" th:field="*{questionDetails}" rows="5" placeholder="Question" required></textarea>
+              <textarea class="form-control" name="questionDetails" th:field="*{questionDetails}" rows="5" placeholder="Question" required></textarea>
+<!--              <label th:if="${#fields.hasErrors('questionDetails')}" th:errors="*{questionDetails}" class="error"></label>-->
             </div>
             </div>
 

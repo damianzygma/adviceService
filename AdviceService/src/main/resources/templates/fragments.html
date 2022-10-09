@@ -63,13 +63,14 @@
                     </ul>
                 </li>
                 <li><a th:href="@{/addQuestion}">Add question</a></li>
-                <li><a th:href="@{/user/{nickname} (nickname=${@userService.getLoggedUserName()})}">Your profile</a></li>
+                <li><a th:href="@{/user}">Your profile</a></li>
 
             </ul>
         </nav><!-- .navbar -->
 
         <div class="position-relative">
-            <a th:href="@{/login1}" class="mx-2"><span >Login</span></a>
+            <a th:href="@{/login1}" class="mx-2" ><span th:style="${@userService.getLoggedUserEntity() == null ? 'display:block' : 'display:none'}">Login</span></a>
+            <a th:href="@{/logout}" class="mx-2" ><span th:style="${@userService.getLoggedUserEntity() != null ? 'display:block' : 'display:none'}">Logout</span></a>
 
             <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
             <i class="bi bi-list mobile-nav-toggle"></i>

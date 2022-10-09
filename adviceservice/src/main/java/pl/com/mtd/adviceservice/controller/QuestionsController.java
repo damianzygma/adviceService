@@ -1,28 +1,21 @@
 package pl.com.mtd.adviceservice.controller;
 
-
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
-import pl.com.mtd.adviceservice.converter.QuestionConverter;
-import pl.com.mtd.adviceservice.converter.validators.QuestionValidator;
-import pl.com.mtd.adviceservice.dto.CategoryDto;
+import pl.com.mtd.adviceservice.controller.validators.QuestionValidator;
 import pl.com.mtd.adviceservice.dto.QuestionDto;
-import pl.com.mtd.adviceservice.model.Category;
+import pl.com.mtd.adviceservice.dto.UserProfileDto;
 import pl.com.mtd.adviceservice.model.Question;
-import pl.com.mtd.adviceservice.model.User;
 import pl.com.mtd.adviceservice.service.CategoryService;
 import pl.com.mtd.adviceservice.service.QuestionService;
 import pl.com.mtd.adviceservice.service.UserService;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
+
 
 @Controller
 public class QuestionsController {
@@ -33,8 +26,8 @@ public class QuestionsController {
     private final CategoryService categoryService;
 
     @ModelAttribute("loggedUser")
-    private User loggedUser(){
-        return userService.getLoggedUserName();
+    private UserProfileDto loggedUser() {
+        return userService.getLoggedUser();
     }
 
     public QuestionsController(QuestionService questionService, UserService userService, QuestionValidator questionValidator,
@@ -45,25 +38,27 @@ public class QuestionsController {
         this.categoryService = categoryService;
     }
 
+
     @GetMapping("/questions")
-    public String getAllQuestionsFromCategory(){
+    public String getAllQuestionsFromCategory() {
 //        List<Question> questions = questionService.getQuestions();
 //        model.addAttribute("questions", questions);
         return "category";
     }
 
-//    tylko dla sprawdzenia działania widoku
+    //    tylko dla sprawdzenia działania widoku
     @GetMapping("/singleQuestion")
-    public String getSingleQuestionView(){
+    public String getSingleQuestionView() {
         return "single-post";
     }
 
-    @InitBinder("questionDto")
+    @InitBinder("question")
     private void initBinder(WebDataBinder binder) {
         binder.addValidators(questionValidator);
     }
+
     @GetMapping("/addQuestion")
-    public String getAddQuestion(Model model){
+    public String getAddQuestion(Model model) {
         QuestionDto questionDto = new QuestionDto();
         model.addAttribute("question", questionDto);
         model.addAttribute("categories", categoryService.getAllCategories());
@@ -71,8 +66,8 @@ public class QuestionsController {
     }
 
     @PostMapping("/addQuestion")
-    public String saveQuestion(@Valid @ModelAttribute QuestionDto questionDto, BindingResult result){
-        if(result.hasErrors()){
+    public String saveQuestion(@Valid @ModelAttribute("question") QuestionDto questionDto, BindingResult result) {
+        if (result.hasErrors()) {
             return "add-question";
         }
         questionService.addQuestion(questionDto);
@@ -80,7 +75,7 @@ public class QuestionsController {
     }
 
     @GetMapping("/editQuestion/{id}")
-    public String getQuestion(@PathVariable("id") Long id, Model model){
+    public String getQuestion(@PathVariable("id") Long id, Model model) {
 //        Optional<User> user = userService.getUserById(id);
         Question question = questionService.getQuestion(id);
 //        model.addAttribute("user", user);
@@ -89,24 +84,21 @@ public class QuestionsController {
     }
 
     @PostMapping("/editQuestionSave/{id}")
-    public RedirectView saveEditQuestion(@ModelAttribute Question newQuestion, @PathVariable("id") Long id){
+    public RedirectView saveEditQuestion(@ModelAttribute Question newQuestion, @PathVariable("id") Long id) {
         questionService.editQuestion(newQuestion);
         return new RedirectView("/questions");
     }
 
-//    wyłącznie dla sprawdzenia widoku
+    //    wyłącznie dla sprawdzenia widoku
     @GetMapping("editQuestion")
-    public String getEditQuestionView(){
+    public String getEditQuestionView() {
         return "edit-question";
     }
 
-    public RedirectView deleteQuestion(@PathVariable("id") Long id){
+    public RedirectView deleteQuestion(@PathVariable("id") Long id) {
         questionService.deleteQuestion(id);
         return new RedirectView("/questions");
     }
-
-
-
 
 
 }

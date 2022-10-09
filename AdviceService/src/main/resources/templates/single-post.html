@@ -32,11 +32,25 @@
             <!-- ======= Single Post Content ======= -->
             <div class="single-post">
               <div class="post-meta"><span class="date">Category</span> <span class="mx-1">&bullet;</span> <span>Author</span><span class="mx-1">&bullet;</span> <span>Date</span></div>
+              <div class="comment-meta d-flex align-items-baseline">
+                <span class="rating"> +1501 </span>
+                <span>
+                          <form method="post" action="#">
+                          <button type="submit" name="1" value="1" class="rating-btn-positive"><i class="fa fa-thumbs-up"></i></button>
+                          </form>
+                      </span>
+                <span class="rating"> -16 </span>
+                <span>
+                          <form method="post" action="#">
+                            <button type="submit" name="1" value="-1" class="rating-btn-negative"><i class="fa fa-thumbs-down"></i></button>
+                          </form>
+                      </span>
+              </div>
               <h1 class="mb-5">Question: 13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h1>
               <p class="question-details"><span class="firstcharacter">L</span>orem ipsum dolor sit, amet consectetur adipisicing elit. Ratione officia sed, suscipit distinctio, numquam omnis quo fuga ipsam quis inventore voluptatum recusandae culpa, unde doloribus saepe labore alias voluptate expedita? Dicta delectus beatae explicabo odio voluptatibus quas, saepe qui aperiam autem obcaecati, illo et! Incidunt voluptas culpa neque repellat sint, accusamus beatae, cumque autem tempore quisquam quam eligendi harum debitis.
                 Sunt reprehenderit, hic vel optio odit est dolore, distinctio iure itaque enim pariatur ducimus. Rerum soluta, perspiciatis voluptatum cupiditate praesentium repellendus quas expedita exercitationem tempora aliquam quaerat in eligendi adipisci harum non omnis reprehenderit quidem beatae modi. Ea fugiat enim libero, ipsam dicta explicabo nihil, tempore, nulla repellendus eos necessitatibus eligendi corporis cum? Eaque harum, eligendi itaque numquam aliquam soluta. Explicabo perspiciatis, laborum provident voluptates illum in nulla consectetur atque quaerat excepturi quisquam, veniam velit ex pariatur quos consequuntur? Excepturi reiciendis perferendis, cupiditate dolorem eos illum amet. Beatae voluptates nemo esse ratione voluptate, nesciunt fugit magnam veritatis voluptas dignissimos doloribus maiores? Aliquam, dolores natus exercitationem corrupti blanditiis, consequuntur nihil nobis sed voluptatibus maiores sunt, illo provident aliquid laborum. Vitae, ut.</p>
                
-                <div class="row">
+                <div class="row" th:style="${@userService.getLoggedUserEntity() != null ? 'display:block' : 'display:none'}">
                 <input type="submit" class="btn btn-primary col-md-2" value="Delete question">
                 <input type="button" class="btn btn-primary col-md-2" value="Update question" th:onclick="|window.location.href='@{/editQuestion}'|">
                     </div>
@@ -83,7 +97,8 @@
                   <div class="comment-body">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non minima ipsum at amet doloremque qui magni, placeat deserunt pariatur itaque laudantium impedit aliquam eligendi repellendus excepturi quibusdam nobis esse accusantium.
                   </div>
-                    <input type="button" class="btn btn-primary" value="Add comment" th:onclick="|window.location.href='@{/comment}'|">
+                    <input type="button" class="btn btn-primary" value="Add comment" th:style="${@userService.getLoggedUserEntity() != null ? 'display:block' : 'display:none'}"
+                           th:onclick="|window.location.href='@{/comment}'|">
 
                   <div class="comment-replies bg-light p-3 mt-3 rounded">
                     <h6 class="comment-replies-title mb-4 text-muted text-uppercase">Comments</h6>
@@ -106,18 +121,13 @@
             </div><!-- End Comments -->
 
             <!-- ======= Comments Form ======= -->
-            <div class="row justify-content-center mt-5">
+            <div class="row justify-content-center mt-5" th:style="${@userService.getLoggedUserEntity() != null ? 'display:block' : 'display:none'}">
 
               <div class="col-lg-12">
                 <h5 class="comment-title">Leave an Answer</h5>
                 <div class="row">
-                  <div class="col-lg-6 mb-3">
-                    <label for="comment-name">Name</label>
-                    <input type="text" class="form-control" id="comment-name" placeholder="Enter your name">
-                  </div>
-                  <div class="col-lg-6 mb-3">
-                    <label for="comment-email">Email</label>
-                    <input type="text" class="form-control" id="comment-email" placeholder="Enter your email">
+                  <div class="col-lg-6 mb-3" >
+                    <h4 th:if="${@userService.getLoggedUserEntity() != null}" th:text="${@userService.getLoggedUserEntity().nickname}"></h4>
                   </div>
                   <div class="col-12 mb-3">
                     <label for="comment-message">Answer</label>
